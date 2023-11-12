@@ -1,4 +1,5 @@
-
+server:
+  port: 8084
 spring:
   jpa:
     properties:
@@ -11,4 +12,3 @@ spring:
     url: jdbc:postgresql://localhost:5432/todo
     username: postgres
     password: admin
-  port: 8084
