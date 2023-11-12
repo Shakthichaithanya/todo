@@ -5,15 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
-import java.time.LocalDate;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorInfo {
-
-    private HttpStatus httpStatus;
-    private LocalDate date;
+public class ResponseInfo {
+    private HttpStatus status;
     private String message;
-    private String path;
+    private Object data;
+
+    public ResponseInfo(HttpStatus staus,String message){
+        this.status = staus;
+        this.message = message;
+    }
 }
