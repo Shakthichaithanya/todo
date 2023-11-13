@@ -57,7 +57,11 @@ class TaskControllerTest {
         taskDTOList.add(taskDTO);
     }
 
-    @DisplayName("JUnit test case for post mapping")
+
+    /**
+     * test case to add new task to database
+     * @throws Exception
+     */
     @Test
     void addTask() throws Exception {
         BDDMockito.given(taskService.addTask(taskDTO)).willReturn("new task added");
@@ -69,7 +73,10 @@ class TaskControllerTest {
     }
 
 
-    @DisplayName("JUnit test case for get all task mapping")
+    /**
+     * test case to get all task details
+     * @throws Exception
+     */
     @Test
     void getAllTasks() throws Exception{
         BDDMockito.given(taskService.getAllTasks()).willReturn(taskDTOList);
