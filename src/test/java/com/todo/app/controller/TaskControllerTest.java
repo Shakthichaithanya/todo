@@ -8,6 +8,7 @@ import com.todo.app.service.TaskService;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -55,6 +57,11 @@ class TaskControllerTest {
         taskDTOList.add(taskDTO);
     }
 
+
+    /**
+     * test case to add new task to database
+     * @throws Exception
+     */
     @Test
     void addTask() throws Exception {
         BDDMockito.given(taskService.addTask(taskDTO)).willReturn("new task added");
@@ -65,6 +72,11 @@ class TaskControllerTest {
         response.andExpect(status().isCreated()).andExpect(jsonPath("$.message", CoreMatchers.is("new task added")));
     }
 
+
+    /**
+     * test case to get all task details
+     * @throws Exception
+     */
     @Test
     void getAllTasks() throws Exception{
         BDDMockito.given(taskService.getAllTasks()).willReturn(taskDTOList);
