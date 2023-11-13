@@ -55,6 +55,10 @@ class TaskControllerTest {
         taskDTOList.add(taskDTO);
     }
 
+    /**
+     * test case to add new task to database
+     * @throws Exception
+     */
     @Test
     void addTask() throws Exception {
         BDDMockito.given(taskService.addTask(taskDTO)).willReturn("new task added");
@@ -65,6 +69,10 @@ class TaskControllerTest {
         response.andExpect(status().isCreated()).andExpect(jsonPath("$.message", CoreMatchers.is("new task added")));
     }
 
+    /**
+     * test case to get all task details
+     * @throws Exception
+     */
     @Test
     void getAllTasks() throws Exception{
         BDDMockito.given(taskService.getAllTasks()).willReturn(taskDTOList);
