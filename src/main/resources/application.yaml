@@ -1,9 +1,7 @@
-
+server:
+  port: 8084
 spring:
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
   datasource:
@@ -11,4 +9,3 @@ spring:
     url: jdbc:postgresql://localhost:5432/todo
     username: postgres
     password: admin
-  port: 8084
