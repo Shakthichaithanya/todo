@@ -28,4 +28,11 @@ public class TaskController {
     public ResponseEntity<List<TaskDTO>> getAllTasks() {
         return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseInfo> deleteTask(@PathVariable("id") Long id) {
+        String message = taskService.deleteTask(id);
+        ResponseInfo response = new ResponseInfo(HttpStatus.OK,message);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

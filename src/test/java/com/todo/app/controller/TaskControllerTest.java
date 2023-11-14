@@ -85,4 +85,17 @@ class TaskControllerTest {
 
         response.andExpect(status().isOk()).andExpect(jsonPath("$.size()",CoreMatchers.is(taskDTOList.size())));
     }
+
+    /**
+     * test case to delete task from database
+     * @throws Exception
+     */
+    @Test
+    void deleteTask() throws Exception{
+        BDDMockito.given(taskService.deleteTask(1l)).willReturn("Task deleted successfully");
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/1"));
+
+        response.andExpect(status().isOk()).andExpect(jsonPath("$.message",CoreMatchers.is("Task deleted successfully")));
+    }
 }
