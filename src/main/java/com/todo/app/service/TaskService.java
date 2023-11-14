@@ -8,4 +8,6 @@ public interface TaskService {
     List<TaskDTO> getAllTasks();
 
     String addTask(TaskDTO task);
+
+    String deleteTask(Long id);
 }
