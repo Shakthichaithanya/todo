@@ -17,6 +17,11 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    /**
+     * Creating a new task
+     * @param task
+     * @return ResponseInfo
+     */
     @PostMapping()
     public ResponseEntity<ResponseInfo> addTask(@Valid @RequestBody TaskDTO task) {
         String message = taskService.addTask(task);
@@ -24,11 +29,21 @@ public class TaskController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
 
     }
+
+    /**
+     * getting all tasks
+     * @return List<TAskDTO>
+     */
     @GetMapping()
     public ResponseEntity<List<TaskDTO>> getAllTasks() {
         return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
     }
 
+    /**
+     * Deleting task using id
+     * @param id
+     * @return ResponseInfo
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseInfo> deleteTask(@PathVariable("id") Long id) {
         String message = taskService.deleteTask(id);
