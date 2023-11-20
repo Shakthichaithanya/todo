@@ -63,6 +63,7 @@ class TaskControllerTest {
      * @throws Exception
      */
     @Test
+    @DisplayName("JUnit test for post mapping adding new task")
     void addTask() throws Exception {
         BDDMockito.given(taskService.addTask(taskDTO)).willReturn("new task added");
 
@@ -78,6 +79,7 @@ class TaskControllerTest {
      * @throws Exception
      */
     @Test
+    @DisplayName("JUnit test case for get mapping to get all tasks")
     void getAllTasks() throws Exception{
         BDDMockito.given(taskService.getAllTasks()).willReturn(taskDTOList);
 
@@ -91,6 +93,7 @@ class TaskControllerTest {
      * @throws Exception
      */
     @Test
+    @DisplayName("JUnit test case for delete mapping to delete task using id")
     void deleteTask() throws Exception{
         BDDMockito.given(taskService.deleteTask(1l)).willReturn("Task deleted successfully");
 
